@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black; /*COLOCAR IMAGEM NO FUNDO*/
+}
+
+.banner {
+    height: 60vh;
+    width: 25vw;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 15px;
+    background: transparent;
+    color: white;
+}
+
+.banner h1{
+    font-size: 40px;
+    text-align: center;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    padding: 20px 45px 20px 20px;
+    font-size: 18px;
+}
+
+.input input::placeholder{
+    color: white;
+}
+
+.input i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px
+}
