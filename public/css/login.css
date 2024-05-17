@@ -11,7 +11,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: black; /*COLOCAR IMAGEM NO FUNDO*/
+    background: url(../assets/mosaico.jpg) no-repeat; /*COLOCAR IMAGEM NO FUNDO*/
+    background-size: cover;
 }
 
 .banner {
@@ -19,8 +20,9 @@ body {
     width: 25vw;
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 15px;
-    background: transparent;
-    color: white;
+    background-color: #FFFF;
+    opacity: 90%;
+    color: black;
 }
 
 .banner h1{
@@ -38,7 +40,6 @@ body {
 .input input{
     height: 100%;
     width: 100%;
-    background: transparent;
     outline: none;
     border-radius: 15px;
     border: none;

@@ -4,14 +4,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 header{
     display: flex;
+    position: fixed;
     flex-direction: row;
+    padding: 30px;
     height: 15vh;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+    background-color: #000000 ;
 }
 
 .logo{
@@ -19,7 +24,25 @@ header{
     width: 90px;
 }
 
-img {
+.navbar {
+    width: 90%;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 19px;
+    color: #FFFF;
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #FFFF;
+}
+
+.escudo {
     height: 100%;
     width: 100%;
 }
@@ -34,21 +57,112 @@ section {
 }
 
 section:nth-of-type(1) {
-    background-image: url(../assets/neoquimicaarena2024.png);
+    background-image: url(../assets/mosaico.png);
     height: 100vh;
 
 }
 
 section:nth-of-type(3) {
-    background-image: url(../assets/torcida.jpg);
+    background-image: url(../assets/idolos.png);
     height: 100vh;
 }
 
 section:nth-of-type(5) {
-    background-image: url(../assets/torcidaCorinthians\ .png);
+    background-image: url(../assets/titulomundial.png);
     height: 100vh;
 }
 
 section:nth-of-type(7) {
-    
+    background-image: url(../assets/torcida.png);
+    height: 100vh;
+}
+
+section:nth-of-type(9) {
+    background-image: url(../assets/feminino.png) ;
+    background-position: center;
+    height: 100vh;
+}
+
+.paralax {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 70px;
+    color: #FFFF;
+}
+
+.sobre {
+    display: flex;
+    padding: 60px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.sobre h1 {
+    font-size: 60px;
+}
+
+.sobre p{
+    font-size: 30px;
+}
+
+.idolos {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
+}
+
+.idolos h1{
+    font-size: 60px;
+}
+
+.container {
+    display: flex;
+    height: 90vh;
+    padding: 40px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box {
+    border: #000000 2px solid;
+    border-radius: 10px;
+    width: 330px;
+    height: 60vh;
+    background-size: cover;
+}
+
+.box:hover {
+    transform: scale(1.1);
+}
+
+.box:nth-of-type(1) {
+    background-image: url(../assets/cassio.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box:nth-of-type(2) {
+    background-image: url(../assets/socrates.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box:nth-of-type(3) {
+    background-image: url(../assets/marcelinho.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box:nth-of-type(4) {
+    background-image: url(../assets/neto.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    height: 15vh;
+    background-color: #000000;
 }
