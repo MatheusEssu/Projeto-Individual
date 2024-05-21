@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../assets/mosaico.png) no-repeat; /*COLOCAR IMAGEM NO FUNDO*/
+    background-size: cover;
+    font-family: "Oswald";
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 90vh;
+    width: 35vw;
+    border: 2px solid #DAA520;
+    border-radius: 15px;
+    background-color: black;
+    opacity: 90%;
+    color: #FFFF;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 20vw;
+}
+
+.banner h1{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 30px 0;
+
+}
+
+.input input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: solid 3px #FFFF;
+    padding: 20px 45px 20px 20px;
+    font-size: 18px;
+    color: #FFFF;
+    background-color: transparent;
+}
+
+.input input:focus {
+    border-bottom: solid 3px #DAA520;
+}
+
+.input i:focus {
+    color: #DAA520;
+}
+
+.input i{
+    position: absolute;
+    color: #FFFF;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px
+}
+
+.input .idolo {
+    width: 100%;
+    padding: 10px;
+    border: solid #FFFF;
+    border-radius: 15px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #FFFF;
+}
+
+.input .idolo:focus {
+    border: #DAA520 solid 3px;
+    color: #DAA520;
+}
+
+.btn {
+    padding: 10px;
+    width: 15vw;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #0000;
+    color: #FFFF;
+    border: #FFFF solid;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.link {
+    margin-bottom: 20px;
+}
+
+.link p {
+    font-size: 20px;
+}
+
+a {
+    color: #DAA520;
+}
