@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Projeto Individual</title>
-    <link rel="stylesheet" href="../public/css/cadastro.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="banner">
-        
+
         <div class="form">
 
             <h1>Cadastre-se</h1>
 
             <div class="input">
-                <input type="text" id="usuario" placeholder="Usuário" required>
+                <input type="text" id="ipt_usuario" placeholder="Usuário" required>
                 <i class='bx bx-user'></i>
             </div>
-        
+
             <div class="input">
-                <input type="text" id="email" placeholder="E-mail" required>
+                <input type="text" id="ipt_email" placeholder="E-mail" required>
                 <i class='bx bx-envelope'></i>
             </div>
 
             <div class="input">
-                <input type="text" id="senha" placeholder="Senha" required>
-                <i class='bx bx-lock-alt' ></i>
+                <input type="text" id="ipt_senha" placeholder="Senha" required>
+                <i class='bx bx-lock-alt'></i>
             </div>
 
             <div class="input">
-                <input type="text" id="confirmacao" placeholder="Confirme a senha" required>
-                <i class='bx bx-lock-alt' ></i>
+                <input type="text" id="ipt_confirmacao" placeholder="Confirme a senha" required>
+                <i class='bx bx-lock-alt'></i>
             </div>
 
             <div class="input">
-                <select class="idolo" id="idolo">
+                <select class="idolo" id="ipt_idolo">
                     <option value="#">Selecione um ídolo</option>
-                    <option value="cassio">Cássio</option>
-                    <option value="socrates">Sócrates</option>
-                    <option value="marcelinho">Marcelinho Carioca</option>
-                    <option value="neto">Neto</option>
+                    <option value="1">Cássio</option>
+                    <option value="2">Sócrates</option>
+                    <option value="3">Marcelinho Carioca</option>
+                    <option value="4">Neto</option>
                 </select>
             </div>
 
-            
+
             <button onclick="cadastrar()" class="btn">Cadastrar</button>
 
             <br>
@@ -57,7 +61,84 @@
             </div>
 
         </div>
-    
+
+<div id="div_erro"></div>
+
     </div>
 </body>
+
 </html>
+<script>
+    function cadastrar() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = ipt_usuario.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var confirmacaoSenhaVar = ipt_confirmacao.value;
+        var idoloVar = ipt_idolo.value
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == "" ||
+            idoloVar == ""
+        ) {
+      //      cardErro.style.display = "block";
+        //    mensagem_erro.innerHTML =
+          alert("Todos os campos devem ser preenchidos");
+
+            
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idoloServer: idoloVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+            //        cardErro.style.display = "block";
+
+              //      mensagem_erro.innerHTML =
+                alert("Cadastro realizado com sucesso! Redirecionando para tela de Login..");
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                
+            });
+
+        return false;
+    }
+
+
+    function sumirMensagem() {
+        div_erro.style.display = "none";
+    }
+</script>
