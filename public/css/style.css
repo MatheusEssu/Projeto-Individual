@@ -147,7 +147,7 @@ section:nth-of-type(9) {
 .box {
     border: #000000 2px solid;
     border-radius: 10px;
-    width: 330px;
+    width: 300px;
     height: 60vh;
     background-size: cover;
 }

@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="../js/quiz.js" async></script>
     <title>Quiz - Projeto Individual</title>
 </head>
 <body>
-    
+    <h1>Quiz - Corinthians</h1><br><br>
+
+    <div class="container">
+        <div class="start">
+            <button class="comecar button">Começar quiz!</button>
+        </div>
+        <div class="container-questoes hide">
+            <div class="pergunta">Pergunta.</div>
+            <div class="container-respostas">
+                <button class="resposta button" id="a">Resposta 1</button>
+                <button class="resposta button" id="b">Resposta 2</button>
+                <button class="resposta button" id="c">Resposta 3</button>
+                <button class="resposta button" id="d">Resposta 4</button>
+            </div>
+        </div>
+        <div class="controles">
+            <button class="proxima button hide">Próxima pergunta</button>
+        </div>
+    </div>
 </body>
 </html>
