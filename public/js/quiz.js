@@ -71,9 +71,54 @@ proxima.classList.remove("hide")
 questaoAtual++
 }
 
+let resultado = 0
+let id = sessionStorage.ID_USUARIO;
+ 
+function enviar() {
+    console.log(resultado)
+    console.log(id)
+
+
+    fetch("../quiz/insertQuiz", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          pontuacaoServer: resultado,
+          tentativaServer: +1,
+          idServer: id 
+      })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO pontuar()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+            
+           
+    
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+            });
+        } else {
+      
+            console.log("Houve um erro ao tentar realizar o pontuar!");
+    
+            
+        }
+    
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    window.location = "./painel.html"
+}
+
 function finalizar() {
+    console.log("eNTROU FINALIZAR")
     const totalQuestoes = quiz.length;
-    const resultado = totalAcertos * 100 / totalQuestoes;
+    resultado += totalAcertos * 100 / totalQuestoes;
     const erros = totalQuestoes - totalAcertos;
     let mensagem = ""
 
@@ -94,7 +139,10 @@ function finalizar() {
     Erros: <span style="color:red; font-weight:bold">${erros}</span><br>
     Aproveitamento: <span style="color:#DAA520; font-weight:bold">${resultado}%</span><br>
     ${mensagem}</p>
-    <a href="../dashboard/painel.html"><button class="button">Finalizar</button></a>`
+    <button class="button" onclick="enviar()">Finalizar</button>`
+
+
+    
 
 } 
 
