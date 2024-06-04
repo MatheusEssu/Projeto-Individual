@@ -142,9 +142,22 @@ function finalizar() {
     <button class="button" onclick="enviar()">Finalizar</button>`
 
 
-    
+    fetch(`/registro/registrar`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          qtdPontosServer: totalCorrect,
+          idServer: id,
+          quizServer : idQuiz
+        })
+      }).then(res => {
+        console.log(res);
+      })
+      console.log(totalCorrect);
+    }
 
-} 
 
 const quiz = [
     {
