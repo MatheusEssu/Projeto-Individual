@@ -19,7 +19,7 @@ function kpi_resultado(id) {
 
   function buscarUltimasMedidas() {
 
-    var instrucaoSql = `select quiz.pontuacao, usuario.nome from usuario join quiz on usuario.idUsuario = quiz.fkUsuario limit 5;`;
+    var instrucaoSql = `select quiz.pontuacao, usuario.nome from usuario join quiz on usuario.idUsuario = quiz.fkUsuario order by idQuiz desc limit 5;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

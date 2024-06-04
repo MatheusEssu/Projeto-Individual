@@ -29,6 +29,8 @@
                 <i class='bx bx-lock-alt' ></i>
             </div>
 
+            <div id="mensagem_erro"></div><br>
+            
             <button onclick="entrar()" class="btn">Login</button>
 
             <br>
@@ -52,12 +54,13 @@ function entrar() {
 
     if (emailVar == "" || senhaVar == "") {
       //  cardErro.style.display = "block"
-      //  mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-      //  finalizarAguardar();
-      //  return false;
-      alert("Mensagem de erro para todos os campos em branco")
-    }
-
+        mensagem_erro.innerHTML = `<span style="color:red;">E-mail ou senha estão em branco</span>`;
+        return false;
+    } //else if () {
+        //mensagem_erro.innerHTML = `<span style=""></span>`
+   // } 
+    
+    else {
 
     console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", senhaVar);
@@ -107,6 +110,7 @@ function entrar() {
     })
 
     return false;
+    }
 }
 
 </script>

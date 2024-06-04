@@ -82,22 +82,16 @@ fetch("/dashboard/buscarUltimasMedidas")
         })
     })
 
-var votos = [];
 var idolos = [];
     fetch("/dashboard/buscarVotos")
     .then(function (resposta) {
         resposta.json().then(function (res) {
             console.log(res[0]);
-            votos[0] = res[0].pontuacao;
-            votos[1] = res[1].pontuacao;
-            votos[2] = res[2].pontuacao;
-            votos[3] = res[3].pontuacao;
-                    
-            idolos[0] = res[0].nome;
-            idolos[1] = res[1].nome;
-            idolos[2] = res[2].nome;
-            idolos[3] = res[3].nome;
-            graficos();
+            idolos[0] = res[0].cassio;
+            idolos[1] = res[0].socrates;
+            idolos[2] = res[0].marcelinho;
+            idolos[3] = res[0].neto;
+            graficosIdolos();
         })
     })
 
@@ -127,24 +121,27 @@ function graficos() {
 }
 
 
+function graficosIdolos() {
 
-const ctx2 = document.getElementById('grafico_idolos');
-
-new Chart(ctx2, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green'],
-        datasets: [{
-            label: 'ídolos votados',
-            data: [12, 19, 3, 5],
+    const ctx2 = document.getElementById('grafico_idolos');
+    
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Cássio', 'Sócrates', 'Marcelinho', 'Neto'],
+            datasets: [{
+                label: 'ídolos votados',
+            data: idolos,
             borderWidth: 1
         }]
     },
     options: {
         scales: {
             y: {
-                beginAtZero: true
+                suggestedMin: 0,
             }
         }
     }
 });
+
+}
