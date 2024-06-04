@@ -79,21 +79,22 @@ function finalizar() {
 
     if (true) {
         if (resultado >= 90) {
-            mensagem = "Parabéns, você é Corinthiano roxo"
+            mensagem = "Parabéns, você é Corinthiano roxo."
         } else if (resultado >= 70) {
-            mensagem = "Muito bom, você realmente torce para o Corinthians"
+            mensagem = "Muito bom, você realmente torce para o Corinthians."
         } else if (resultado >= 50) {
             mensagem = "Foi bem, mas tenho minhas dúvidas..."
         } else {
-            mensagem = "Sai daqui Palmeirense 🤬"
+            mensagem = "Sai daqui Palmeirense 🤬."
         }
     }
 
-    questoes.innerHTML = `<p>Total de perguntas:${totalQuestoes}<br>
-    Acertos:${totalAcertos}<br>
-    Erros:${erros}<br>
-    Resultado:${resultado}</p>
-    <a href="../dashboard/painel.html"><button>Finalizar</button></a>`
+    questoes.innerHTML = `<p>Total de perguntas: ${totalQuestoes}<br>
+    Acertos: <span style="color:green; font-weight:bold">${totalAcertos}</span><br>
+    Erros: <span style="color:red; font-weight:bold">${erros}</span><br>
+    Aproveitamento: <span style="color:#DAA520; font-weight:bold">${resultado}%</span><br>
+    ${mensagem}</p>
+    <a href="../dashboard/painel.html"><button class="button">Finalizar</button></a>`
 
 } 
 

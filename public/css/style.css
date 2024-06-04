@@ -105,7 +105,7 @@ section:nth-of-type(9) {
     align-items: center;
     text-align: center;
     font-size: 70px;
-    color: #FFFF;
+    color: #000000;
 }
 
 .sobre {
@@ -113,16 +113,19 @@ section:nth-of-type(9) {
     padding: 60px;
     flex-direction: column;
     gap: 30px;
+    background-color: #000000;
 }
 
 .sobre h1 {
     font-size: 60px;
     text-align: center;
+    color: #DAA520;
 }
 
 .sobre p{
     font-size: 30px;
     text-align: left;
+    color: #FFFF;
 }
 
 .idolos {
@@ -130,10 +133,12 @@ section:nth-of-type(9) {
     flex-direction: column;
     text-align: center;
     padding: 40px;
+    background-color: #000000;
 }
 
 .idolos h1{
     font-size: 60px;
+    color: #DAA520;
 }
 
 .container {
@@ -145,7 +150,7 @@ section:nth-of-type(9) {
 }
 
 .box {
-    border: #000000 2px solid;
+    border: #DAA520 2px solid;
     border-radius: 10px;
     width: 300px;
     height: 60vh;
@@ -185,11 +190,13 @@ section:nth-of-type(9) {
     padding: 40px;
     justify-content: center;
     flex-direction: column;
+    background-color: #000000;
 }
 
 .estadio h1 {
     text-align: center;
     font-size: 60px;
+    color: #DAA520;
 }
 
 .container-estadio{
@@ -203,13 +210,13 @@ section:nth-of-type(9) {
 .estadio .container-estadio .texto {
     width: 50%;
     height: 70vh;
-    border: #000000 solid;
+    border: #DAA520 solid;
 }
 
 .estadio .container-estadio .local {
     width: 50%;
     height: 70vh;
-    border: #000000 solid;
+    border: #DAA520 solid;
 }
 
 footer {
