@@ -67,17 +67,10 @@ fetch("/dashboard/buscarUltimasMedidas")
     .then(function (resposta) {
         resposta.json().then(function (res) {
             console.log(res[0]);
-            dados[0] = res[0].pontuacao;
-            dados[1] = res[1].pontuacao;
-            dados[2] = res[2].pontuacao;
-            dados[3] = res[3].pontuacao;
-            dados[4] = res[4].pontuacao;
-
-            nomes[0] = res[0].nome;
-            nomes[1] = res[1].nome;
-            nomes[2] = res[2].nome;
-            nomes[3] = res[3].nome;
-            nomes[4] = res[4].nome;
+            for (var cont = 0; cont < res.length; cont++) {
+                dados.push(res[cont].pontuacao)
+                nomes.push(res[cont].nome)
+            }
             graficos();
         })
     })
@@ -106,14 +99,43 @@ function graficos() {
             datasets: [{
                 label: 'Pontuação',
                 data: [dados[0], dados[1], dados[2], dados[3], dados[4]],
-                borderWidth: 1
+                backgroundColor: 'rgba(218, 165, 32, 0.6)',
+                borderWidth: 3,
+                borderColor: '#DAA520'
             }]
         },
         options: {
             scales: {
                 y: {
                     suggestedMin: 0,
-                    suggestedMax: 100
+                    suggestedMax: 100,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.4)'
+                    },ticks: {
+                        color: 'black',
+                        font: {
+                            size: 15
+                        }
+                    }
+                }, x: {
+                    grid: {
+                        color: 'transparent'
+                    }
+                    ,ticks: {
+                        color: 'black',
+                        font: {
+                            size: 15
+                        }
+                    }
+                }
+            }, plugins: {
+                legend: {
+                    labels: {
+                        color: 'black',
+                        font: {
+                            size: 20
+                        }
+                    }
                 }
             }
         }
@@ -132,16 +154,43 @@ function graficosIdolos() {
             datasets: [{
                 label: 'ídolos votados',
             data: idolos,
-            borderWidth: 1
-        }]
+            backgroundColor: 'rgba(218, 165, 32, 0.6)',
+            borderWidth: 3,
+            borderColor: '#DAA520'        }]
     },
     options: {
         scales: {
             y: {
                 suggestedMin: 0,
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.4)'
+                },ticks: {
+                    color: 'black',
+                    font: {
+                        size: 15
+                    }
+                }
+            }, x: {
+                grid: {
+                    color: 'transparent'
+                }
+                ,ticks: {
+                    color: 'black',
+                    font: {
+                        size: 15
+                    }
+                }
+            }
+        }, plugins: {
+            legend: {
+                labels: {
+                    color: 'black',
+                    font: {
+                        size: 20
+                    }
+                }
             }
         }
     }
 });
-
 }
