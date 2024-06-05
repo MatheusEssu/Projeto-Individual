@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(../assets/mosaico.png) no-repeat; /*COLOCAR IMAGEM NO FUNDO*/
+    background: url(../assets/mosaico.png) no-repeat;
     background-size: cover;
 }
 
@@ -91,11 +91,15 @@ body {
 }
 
 .link {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .link p{
-    font-size: 20px;
+    font-size: 15px;
 }
 
 a {

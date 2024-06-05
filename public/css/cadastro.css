@@ -111,11 +111,15 @@ body {
 }
 
 .link {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .link p {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 a {
