@@ -1,116 +1,114 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Projeto Individual</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link rel="stylesheet" href="./css/login.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@100..900&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!--BOXICONS-->
     <div class="banner">
+      <div class="form">
+        <h1>Login</h1>
 
-        <div class="form">
-
-            <h1>Login</h1>
-
-            <div class="input">
-                <input type="text" placeholder="E-mail" id="ipt_email" required>
-                <i class='bx bx-user'></i>
-            </div>
-
-            <div class="input">
-                <input type="password" placeholder="Senha" id="ipt_senha" required>
-                <i class='bx bx-lock-alt' ></i>
-            </div>
-
-            <div id="mensagem_erro"></div><br>
-            
-            <button onclick="entrar()" class="btn">Login</button>
-
-            <br>
-
-            <div class="link">
-                <p>Não possui uma conta?<a href="cadastro.html"> Cadastre-se</a></p>
-            </div>
-
+        <div class="input">
+          <input type="text" placeholder="E-mail" id="ipt_email" required />
+          <i class="bx bx-user"></i>
         </div>
 
-    </div>
+        <div class="input">
+          <input type="password" placeholder="Senha" id="ipt_senha" required />
+          <i class="bx bx-lock-alt"></i>
+        </div>
 
-</body>
+        <div id="mensagem_erro"></div>
+        <br />
+
+        <button onclick="entrar()" class="btn">Login</button>
+
+        <br />
+
+        <div class="link">
+          <p>Não possui uma conta?<a href="cadastro.html"> Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 
 <script>
-function entrar() {
+  var tentativas = 3;
 
+  function entrar() {
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
-
-    if (emailVar == "" || senhaVar == "") {
-      //  cardErro.style.display = "block"
+    tentativas--;
+    if (tentativas >= 0) {
+      if (emailVar == "" || senhaVar == "") {
         mensagem_erro.innerHTML = `<span style="color:red;">E-mail ou senha estão em branco</span>`;
         return false;
-    } //else if () {
-        //mensagem_erro.innerHTML = `<span style=""></span>`
-   // } 
-    
-    else {
+      } else {
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
-
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+        fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
             emailServer: emailVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
+          }),
         })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
+          .then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!");
 
-        if (resposta.ok) {
-            console.log(resposta);
+            if (resposta.ok) {
+              console.log(resposta);
 
-            resposta.json().then(json => {
+              resposta.json().then((json) => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.SENHA_USUARIO = json.senha;
                 sessionStorage.FK_IDOLO = json.fkIdolo;
-             //   sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                 setTimeout(function () {
-                    window.location = "./dashboard/painel.html";
+                  window.location = "./dashboard/painel.html";
                 }, 1000); // apenas para exibir o loading
+              });
+            } else {
+              console.log("Houve um erro ao tentar realizar o login!");
+              alert("INVALIDO");
 
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
-            resposta.text().then(texto => {
+              resposta.text().then((texto) => {
                 console.error(texto);
-            //    finalizarAguardar(texto);
-            });
-        }
+                //    finalizarAguardar(texto);
+              });
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
 
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-
-    return false;
+        return false;
+      }
+    } else {
+      alert("TENTIVAS INVALIDAS");
     }
-}
-
+  }
 </script>
