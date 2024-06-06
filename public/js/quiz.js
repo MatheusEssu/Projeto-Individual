@@ -73,13 +73,37 @@ questaoAtual++
 
 let resultado = 0
 let id = sessionStorage.ID_USUARIO;
- 
-function enviar() {
-    console.log(resultado)
-    console.log(id)
 
+function irDashboard() {
+    window.location.href = "../dashboard/painel.html"
+}
 
-    fetch("../quiz/insertQuiz", {
+function finalizar() {
+    const totalQuestoes = quiz.length;
+    resultado += totalAcertos * 100 / totalQuestoes;
+    const erros = totalQuestoes - totalAcertos;
+    let mensagem = ""
+
+    if (true) {
+        if (resultado >= 90) {
+            mensagem = "Parabéns, você é Corinthiano roxo."
+        } else if (resultado >= 70) {
+            mensagem = "Muito bom, você realmente torce para o Corinthians."
+        } else if (resultado >= 50) {
+            mensagem = "Foi bem, mas tenho minhas dúvidas..."
+        } else {
+            mensagem = "Sai daqui Palmeirense 🤬."
+        }
+    }
+
+    questoes.innerHTML = `<p>Total de perguntas: ${totalQuestoes}<br>
+    Acertos: <span style="color:green; font-weight:bold">${totalAcertos}</span><br>
+    Erros: <span style="color:red; font-weight:bold">${erros}</span><br>
+    Aproveitamento: <span style="color:#DAA520; font-weight:bold">${resultado}%</span><br>
+    ${mensagem}</p>
+    <button class="button" onclick="irDashboard()">Finalizar</button>`
+
+    fetch("/quiz/insertQuiz", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -112,50 +136,6 @@ function enviar() {
         console.log(erro);
     })
 
-    window.location = "./painel.html"
-}
-
-function finalizar() {
-    console.log("eNTROU FINALIZAR")
-    const totalQuestoes = quiz.length;
-    resultado += totalAcertos * 100 / totalQuestoes;
-    const erros = totalQuestoes - totalAcertos;
-    let mensagem = ""
-
-    if (true) {
-        if (resultado >= 90) {
-            mensagem = "Parabéns, você é Corinthiano roxo."
-        } else if (resultado >= 70) {
-            mensagem = "Muito bom, você realmente torce para o Corinthians."
-        } else if (resultado >= 50) {
-            mensagem = "Foi bem, mas tenho minhas dúvidas..."
-        } else {
-            mensagem = "Sai daqui Palmeirense 🤬."
-        }
-    }
-
-    questoes.innerHTML = `<p>Total de perguntas: ${totalQuestoes}<br>
-    Acertos: <span style="color:green; font-weight:bold">${totalAcertos}</span><br>
-    Erros: <span style="color:red; font-weight:bold">${erros}</span><br>
-    Aproveitamento: <span style="color:#DAA520; font-weight:bold">${resultado}%</span><br>
-    ${mensagem}</p>
-    <button class="button" onclick="enviar()">Finalizar</button>`
-
-
-    fetch(`/registro/registrar`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          qtdPontosServer: totalCorrect,
-          idServer: id,
-          quizServer : idQuiz
-        })
-      }).then(res => {
-        console.log(res);
-      })
-      console.log(totalCorrect);
     }
 
 

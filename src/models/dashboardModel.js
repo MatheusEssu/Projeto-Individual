@@ -3,7 +3,7 @@ var database = require("../database/config")
 
 function kpi_tentativas(id) {
 
-    var instrucaoSql = `SELECT sum(tentativas) from Quiz where fkUsuario = '${id}';`;
+    var instrucaoSql = `select sum(tentativas) from quiz where fkUsuario = '${id}';`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -11,7 +11,8 @@ function kpi_tentativas(id) {
 
 function kpi_resultado(id) {
 
-    var instrucaoSql = `SELECT max(pontuacao) from Quiz where fkUsuario = '${id}';`;
+    var instrucaoSql = `select max(pontuacao) from quiz where fkUsuario = '${id}' order by pontuacao desc limit 1;`;
+   
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
